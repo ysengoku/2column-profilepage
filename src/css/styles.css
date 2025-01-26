@@ -1,0 +1,68 @@
+/* .poster {
+	background-image: url('../../img/poster.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+} */
+
+/* .online-status-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: gray;
+    display: inline-block;
+}
+
+.online-status-indicator.online {
+    background-color: green;
+} */
+
+/* .profile-avatar-container {
+    width: 100%;
+    background-color:darkgoldenrod;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.profile-avatar-container img {
+    width: 144px;
+    aspect-ratio: 1;
+    object-fit: cover;
+} */
+
+.profile-status-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.profile-status-indicator.online {
+    background-color: green;
+}
+
+.enemy-avatar-container {
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.enemy-avatar-container img {
+    width: 88px;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.row.no-gutters > [class*='col-'] {
+    padding-right: 0;
+    padding-left: 0;
+}
