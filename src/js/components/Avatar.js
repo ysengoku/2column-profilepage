@@ -25,9 +25,11 @@ export class ProfileAvatar extends HTMLElement {
                     justify-content: center;
                     align-items: center;
                     height: auto;
-                    background-color: darkgoldenrod;
                 }
-                
+                .avatar-frame {
+                    width: 90%;
+                    background-color: rgba(89, 70, 57, 0.4);
+                }
                 .profile-avatar-container img {
                     width: 144px;
                     aspect-ratio: 1;
@@ -37,7 +39,9 @@ export class ProfileAvatar extends HTMLElement {
                 }
             </style>
             <div class="profile-avatar-container">
-                <img src="${avatarUrl}" alt="Avatar" class="rounded-circle">
+                <div class="avatar-frame d-flex justify-content-center align-items-center p-2">
+                    <img src="${avatarUrl}" alt="Avatar" class="rounded-circle">
+                </div>
             </div>
         `;
     }

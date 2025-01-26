@@ -44,7 +44,7 @@
     background-color: green;
 }
 
-.enemy-avatar-container {
+/* .enemy-avatar-container {
     background-color: grey;
     display: flex;
     justify-content: center;
@@ -56,7 +56,7 @@
     width: 88px;
     aspect-ratio: 1;
     object-fit: cover;
-}
+} */
 
 .no-margin {
     margin: 0;
@@ -66,3 +66,9 @@
     padding-right: 0;
     padding-left: 0;
 }
+
+.rye-regular {
+    font-family: "Rye", serif;
+    font-weight: 400;
+    font-style: normal;
+  }

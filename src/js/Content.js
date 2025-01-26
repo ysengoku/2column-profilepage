@@ -47,6 +47,7 @@ export class Profile extends HTMLElement {
     			background-size: cover;
     			background-position: center;
     			background-repeat: no-repeat;
+				color: #594639
 			}
 			.online-status-indicator {
     			width: 16px;
@@ -58,6 +59,16 @@ export class Profile extends HTMLElement {
 			.online-status-indicator.online {
     			background-color: green;
 			}
+			hr {
+  				height: 0;
+  				margin: 0;
+  				padding: 0;
+  				border: 0;
+			}
+  			.line {
+  				border-top: 4px double #594639;
+				opacity: 1;
+  			}
 		</style>
 
 		<div class="container-fluid d-grid gap-3">
@@ -69,16 +80,14 @@ export class Profile extends HTMLElement {
 
 				<!-- Container Top -->
 				<div class="flex-grow-1">
-					<div class="text-center">
-						<div class="mb-3 w-100 text-center pt-3">
-							<div class="d-flex flex-row align-items-center">
-								<hr class="flex-grow-1">	
-								${onlineStatus.outerHTML}
-								<hr class="flex-grow-1">
-							</div>
-							<h1>WANTED</h1>
-							<hr>
+					<div class="mb-3 w-100 text-center pt-3 px-2">
+						<div class="d-flex flex-row align-items-center">
+							<hr class="line flex-grow-1">	
+							${onlineStatus.outerHTML}
+							<hr class="line flex-grow-1">
 						</div>
+						<h1 class="rye-regular">WANTED</h1>
+						<hr class="line">
 					</div>
 					<profile-avatar></profile-avatar>
 					<profile-user-info></profile-user-info>
@@ -134,47 +143,21 @@ export class Profile extends HTMLElement {
 			</div>
 		</div>
 
-					<!-- Container Right -->
-					<div class="d-flex col-12 col-md-6">
-						<div class="poster container-fluid d-flex flex-column flex-grow-1 mx-1 my-3 p-3 gap-2">
+		<!-- Container Right -->
+			<div class="d-flex col-12 col-md-6">
+				<div class="poster container-fluid d-flex flex-column flex-grow-1 mx-1 my-3 p-3 gap-2">
 
-							<!-- Container Top -->
-							<div class="d-grid" style="background-color: darkgoldenrod;">
-								<div class="row no-gutters no-margin py-3">
-									<div class="col-6">
-										<div class="d-flex flex-column p-3" style="background-color:darkolivegreen">
-											<p class="no-margin ms-1">Best enemy</p>
-											<div class="d-flex flex-row justify-content-around">
-												<div class="text-center enemy-avatar-container">
-													<img src="./img/avatar.png" alt="User Avatar" class="rounded-circle">
-												</div>
-												<div class="mb-1">
-													<p class="lh-1 fs-5">GeorgeLucas</p>
-													<p class="no-margin fs-6">Elo: 1555</p>
-													<p class="no-margin fs-6">Win rate: 50%</p>
-													<small>win 25 - losses 25</small>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-6">
-										<div class="d-flex flex-column p-3" style="background-color: darkcyan;">
-											<p class="no-margin ms-1">Worst enemy</p>
-											<div class="d-flex flex-row justify-content-around">
-												<div class="text-center enemy-avatar-container">
-													<img src="./img/avatar.png" alt="User Avatar" class="rounded-circle">
-												</div>
-												<div class="mb-1">
-													<p class="lh-1 fs-5">GeorgeLucas</p>
-													<p class="no-margin fs-6">Elo: 1555</p>
-													<p class="no-margin fs-6">Win rate: 50%</p>
-													<small>win 25 - losses 25</small>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+					<!-- Container Top -->
+					<div class="d-grid" style="background-color: darkgoldenrod;">
+						<div class="row no-gutters no-margin py-3">
+							<div class="col-6">
+								<profile-enemy-component type="best"></profile-enemy-component>
 							</div>
+							<div class="col-6">
+								<profile-enemy-component type="worst"></profile-enemy-component>
+							</div>
+						</div>
+					</div>
 
 							<!-- Container Bottom -->
 							<div class="flex-grow-1 d-flex flex-column p-3" style="background-color:chocolate;">
@@ -192,19 +175,32 @@ export class Profile extends HTMLElement {
 
 		const profileUserInfo = this.querySelector('profile-user-info');
 		if (profileUserInfo) {
-			profileUserInfo.username = this.user.username;
-			profileUserInfo.join_date = this.user.date_joined;
-			profileUserInfo.titre = this.user.titre;
+			profileUserInfo.data = 
+			{
+				username: this.user.username,
+				join_date: this.user.date_joined,
+				titre: this.user.titre
+			}
 		}
 
-		const worstEnemy = this.querySelector('worst-enemy');
-		if (worstEnemy) {
-			worstEnemy.data = this.user.worst_enemy;
-		}
+		// const worstEnemy = this.querySelector('worst-enemy');
+		// if (worstEnemy) {
+		// 	worstEnemy.data = this.user.worst_enemy;
+		// }
 
-		const bestEnemy = this.querySelector('best-enemy');
-		if (bestEnemy) {
-			bestEnemy.data = this.user.best_enemy;
+		// const bestEnemy = this.querySelector('best-enemy');
+		// if (bestEnemy) {
+		// 	bestEnemy.data = this.user.best_enemy;
+		// }
+		const bestEnemyComponent = document.querySelector('profile-enemy-component[type="best"]');
+		const worstEnemyComponent = document.querySelector('profile-enemy-component[type="worst"]');
+	
+		if (bestEnemyComponent) {
+			bestEnemyComponent.data = this.user.best_enemy;
+		}
+	
+		if (worstEnemyComponent) {
+			worstEnemyComponent.data = this.user.worst_enemy;
 		}
 	}
 }
