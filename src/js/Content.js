@@ -47,7 +47,7 @@ export class Profile extends HTMLElement {
     			background-size: cover;
     			background-position: center;
     			background-repeat: no-repeat;
-				color: #594639
+				color: #2f2926
 			}
 			.online-status-indicator {
     			width: 16px;
@@ -66,7 +66,7 @@ export class Profile extends HTMLElement {
   				border: 0;
 			}
   			.line {
-  				border-top: 4px double #594639;
+  				border-top: 4px double #2f2926;
 				opacity: 1;
   			}
 		</style>
@@ -133,10 +133,12 @@ export class Profile extends HTMLElement {
 					<!-- Container Top -->
 					<div class="d-grid">
 						<div class="row no-gutters no-margin py-3">
-							<div class="col-6">
+							<div class="col-6 d-flex flex-column px-2 pb-1">
+								<p class="no-margin ms-1">Best enemy</p>
 								<profile-enemy-component type="best"></profile-enemy-component>
 							</div>
-							<div class="col-6">
+							<div class="col-6 d-flex flex-column px-2 pb-1">
+								<p class="no-margin ms-1">Worst enemy</p>
 								<profile-enemy-component type="worst"></profile-enemy-component>
 							</div>
 						</div>

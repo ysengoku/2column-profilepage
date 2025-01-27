@@ -26,8 +26,8 @@ export class ProfileUserInfo extends HTMLElement {
 			day: 'numeric',
 			year: 'numeric'
 		}).format(date);
-		// const titre = this._data.titre;
-		const titre = 'titre';
+		// const title = this._data.title;
+		const title = 'title';
 
 		this.innerHTML = `
 			<div class="d-flex flex-row justify-content-center align-items-center">
@@ -36,7 +36,7 @@ export class ProfileUserInfo extends HTMLElement {
 					<p>Joined on ${formatedDate}</p>
 				</div>
 				<div class="text-center px-3 pt-3">
-					<p>${titre}</p>
+					<p>${title}</p>
 				</div>
 			</div>
 		`;

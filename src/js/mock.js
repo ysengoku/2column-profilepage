@@ -11,7 +11,7 @@ export async function simulateFetchUserProfile() {
 		total_matches: 75,
 		date_joined: '2021-01-15',
 		best_enemy: { username: 'Alice', avatar: '/img/avatar.png', wins: 20, loses: 10, winrate: 67, elo: 1100 },
-		worst_enemy: { username: 'George', avatar: '/img/avatar2.jpg', wins: 10, loses: 25, winrate: 28, elo: 900 },
+		worst_enemy: null,
 		friends: [
 			{ username: 'Alice', avatar: '/mock/img/avatars/sample_avatar2.jpg', elo: 1100, is_online: true },
 			{ username: 'George', avatar: '/mock/img/avatars/sample_avatar3.jpg', elo: 950, is_online: false },

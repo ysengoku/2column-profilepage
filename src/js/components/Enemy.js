@@ -31,18 +31,20 @@ export class ProfileEnemy extends HTMLElement {
 			const enemy = this._data;
 			this.innerHTML = `
 			<style>
+				.enemy-avatar-container {
+					height: 144px;
+				}	
 				.enemy-avatar-container img {
     				width: 88px;
     				aspect-ratio: 1;
     				object-fit: cover;
 				}
 			</style>
-			<div class="d-flex flex-column px-3 pb-1">
-				<p class="no-margin ms-1">${type}</p>
-				<div class="d-flex flex-row justify-content-around align-items-start pt-3">
-					<div class="enemy-avatar-container d-flex flex-column justify-content-center px-2">
-						<p class="lh-1 fs-5">${enemy.username}</p>
-						<img src="${enemy.avatar}" alt="User Avatar" class="rounded-circle">
+			<div class="enemy-avatar-container">
+				<p class="lh-1 fs-5 px-2 pt-3 no-margin">${enemy.username}</p>
+				<div class="d-flex flex-row justify-content-around align-items-start py-2">
+					<div class="d-flex flex-column justify-content-start px-2">
+					<img src="${enemy.avatar}" alt="User Avatar" class="rounded-circle">
 					</div>
 					<div class="mb-1 py-2">
 						<p class="no-margin fs-6">Elo: ${enemy.elo}</p>
@@ -54,8 +56,7 @@ export class ProfileEnemy extends HTMLElement {
 			`;
 		} else {
 			this.innerHTML = `
-			<div class="d-flex flex-column justify-content-center p-3">
-				<p class="no-margin ms-1">${type}</p>
+			<div class="enemy-avatar-container d-flex flex-column justify-content-center text-center p-2">
 				<p>No ${type.toLowerCase()} yet</p>
 			</div>
 			`;

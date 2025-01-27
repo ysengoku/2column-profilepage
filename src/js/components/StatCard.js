@@ -32,17 +32,17 @@ export class ProfileStatCard extends HTMLElement {
 		this.innerHTML = `
 			<style>
 				.stat-card {
-					width: 88px;
-					height: 88px;
+					width: 96px;
+					height: 96px;
 					background-image: url('../../../img/sheriff.png');
 					padding: 8px;
 					background-size: cover;
                     background-position: center;
 				}
 			</style>
-			<div class="stat-card d-flex flex-column justify-content-cernter text-center m-2">
-				<small class="mb-2 no-margin">${title}</small>
-				<p class="no-margin">${value}</p>
+			<div class="stat-card d-flex flex-column justify-content-cernter align-items-center pt-4">
+				<small class="no-margin">${title}</small>
+				<p class="no-margin fs-5">${value}</p>
 			</div>
 			`;
 	}
