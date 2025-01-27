@@ -32,9 +32,12 @@ export class ProfileStatCard extends HTMLElement {
 		this.innerHTML = `
 			<style>
 				.stat-card {
+					width: 88px;
 					height: 88px;
 					background-image: url('../../../img/sheriff.png');
 					padding: 8px;
+					background-size: cover;
+                    background-position: center;
 				}
 			</style>
 			<div class="stat-card d-flex flex-column justify-content-cernter text-center m-2">
