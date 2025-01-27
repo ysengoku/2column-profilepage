@@ -1,46 +1,46 @@
-import { simulateFetchUserProfile } from './mock.js';
-import './components/index.js';
+import { simulateFetchUserProfile } from "./mock.js";
+import "./components/index.js";
 
 export class Profile extends HTMLElement {
-	constructor() {
-		super();
-		this.user = null;
-	}
+  constructor() {
+    super();
+    this.user = null;
+  }
 
-	connectedCallback() {
-		this.fetchUserData();
-		// this.render();
-	}
+  connectedCallback() {
+    this.fetchUserData();
+    // this.render();
+  }
 
-	async fetchUserData() {
-		try {
-			const userData = await simulateFetchUserProfile();
-			this.user = userData;
-			this.render();
-		} catch (error) {
-			// Error handling
-			if (error.status === 404) {
-				// 404 page & message
-			} else {
-				// Something went wrong page & message
-			}
-		}
-	}
+  async fetchUserData() {
+    try {
+      const userData = await simulateFetchUserProfile();
+      this.user = userData;
+      this.render();
+    } catch (error) {
+      // Error handling
+      if (error.status === 404) {
+        // 404 page & message
+      } else {
+        // Something went wrong page & message
+      }
+    }
+  }
 
-	render() {
-		if (!this.user) {
-			this.innerHTML = '<div>Loading...</div>';
-			return;
-		}
-		console.log('User data:', this.user);
+  render() {
+    if (!this.user) {
+      this.innerHTML = "<div>Loading...</div>";
+      return;
+    }
+    console.log("User data:", this.user);
 
-		const friendsCount = this.user.friends.length;
-		
-		// Online status
-		const onlineStatus = document.createElement('profile-online-status');
-		onlineStatus.setAttribute('online', this.user.is_online);
+    const friendsCount = this.user.friends.length;
 
-		this.innerHTML = `
+    // Online status
+    const onlineStatus = document.createElement("profile-online-status");
+    onlineStatus.setAttribute("online", this.user.is_online);
+
+    this.innerHTML = `
 		<style>
 			.poster {
 				background-image: url('../../img/poster.png');
@@ -132,68 +132,94 @@ export class Profile extends HTMLElement {
 
 					<!-- Container Top -->
 					<div class="d-grid">
-						<div class="row no-gutters no-margin py-3">
-							<div class="col-6 d-flex flex-column px-2 pb-1">
-								<p class="no-margin ms-1">Best enemy</p>
+						<div class="row no-gutters no-margin pt-3 pb-1">
+							<div class="col-6 d-flex flex-column px-2 pb-1">							
 								<profile-enemy-component type="best"></profile-enemy-component>
 							</div>
 							<div class="col-6 d-flex flex-column px-2 pb-1">
-								<p class="no-margin ms-1">Worst enemy</p>
 								<profile-enemy-component type="worst"></profile-enemy-component>
 							</div>
 						</div>
 					</div>
 
-							<!-- Container Bottom -->
-							<div class="flex-grow-1 d-flex flex-column p-3" style="background-color:grey;">
-								<p>Match History</p>
-							</div>
+					<!-- Container Bottom -->
+					<div class="flex-grow-1 d-flex flex-column p-3">
+						<p>Game History</p>
+						<div class="card text-center">
+  							<div class="card-header">
+    							<ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" href="#" id="duels-tab">Duels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="tournaments-tab">Tournaments</a>
+                        </li>
+                    </ul>
+  							</div>
+							<div class="card-body">
+								<p>List of duels will be displayed here.</p>
+  							</div>
 						</div>
 					</div>
+					
 				</div>
-			</div>`;
+			</div>
+		</div>
+	</div>`;
 
-		const profileAvatar = this.querySelector('profile-avatar');
-		if (profileAvatar) {
-			profileAvatar.avatarUrl = this.user.avatar;
-		}
+    const profileAvatar = this.querySelector("profile-avatar");
+    if (profileAvatar) {
+      profileAvatar.avatarUrl = this.user.avatar;
+    }
 
-		const profileUserInfo = this.querySelector('profile-user-info');
-		if (profileUserInfo) {
-			profileUserInfo.data = 
-			{
-				username: this.user.username,
-				join_date: this.user.date_joined,
-				titre: this.user.titre
-			}
-		}
+    const profileUserInfo = this.querySelector("profile-user-info");
+    if (profileUserInfo) {
+      profileUserInfo.data = {
+        username: this.user.username,
+        join_date: this.user.date_joined,
+        titre: this.user.titre,
+      };
+    }
 
-		// const worstEnemy = this.querySelector('worst-enemy');
-		// if (worstEnemy) {
-		// 	worstEnemy.data = this.user.worst_enemy;
-		// }
+    const bestEnemyComponent = document.querySelector(
+      'profile-enemy-component[type="best"]'
+    );
+    const worstEnemyComponent = document.querySelector(
+      'profile-enemy-component[type="worst"]'
+    );
 
-		// const bestEnemy = this.querySelector('best-enemy');
-		// if (bestEnemy) {
-		// 	bestEnemy.data = this.user.best_enemy;
-		// }
-		const bestEnemyComponent = document.querySelector('profile-enemy-component[type="best"]');
-		const worstEnemyComponent = document.querySelector('profile-enemy-component[type="worst"]');
-	
-		if (bestEnemyComponent) {
-			bestEnemyComponent.data = this.user.best_enemy;
-		}
-	
-		if (worstEnemyComponent) {
-			worstEnemyComponent.data = this.user.worst_enemy;
-		}
-	}
+    if (bestEnemyComponent) {
+      bestEnemyComponent.data = this.user.best_enemy;
+    }
+
+    if (worstEnemyComponent) {
+      worstEnemyComponent.data = this.user.worst_enemy;
+    }
+
+    const duelsTab = this.querySelector("#duels-tab");
+    const tournamentsTab = this.querySelector("#tournaments-tab");
+    const cardBody = this.querySelector("#card-body");
+
+    duelsTab.addEventListener("click", (event) => {
+      event.preventDefault();
+      duelsTab.classList.add("active");
+      tournamentsTab.classList.remove("active");
+      cardBody.innerHTML = "<p>List of duels will be displayed here.</p>";
+    });
+
+    tournamentsTab.addEventListener("click", (event) => {
+      event.preventDefault();
+      tournamentsTab.classList.add("active");
+      duelsTab.classList.remove("active");
+      cardBody.innerHTML = "<p>List of tournaments will be displayed here.</p>";
+    });
+  }
 }
 
-customElements.define('user-profile', Profile);
+customElements.define("user-profile", Profile);
 
-
-{/* <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+{
+  /* <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
 <div class="d-flex justify-content-center align-items-center profile-avatar-container">
 	<img src="${this.user.avatar}" alt="User Avatar" class="rounded-circle">
 </div>
@@ -228,4 +254,5 @@ customElements.define('user-profile', Profile);
 <div class="mb-3 pt-5">
 <a class="btn btn-outline-primary" href="/home" role="button">Back to Home</a>
 </div>
-</div> */}
+</div> */
+}

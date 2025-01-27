@@ -40,8 +40,9 @@ export class ProfileEnemy extends HTMLElement {
     				object-fit: cover;
 				}
 			</style>
+			<p class="no-margin ms-1 text-center">${type}</p>
 			<div class="enemy-avatar-container">
-				<p class="lh-1 fs-5 px-2 pt-3 no-margin">${enemy.username}</p>
+				<p class="lh-1 fs-5 ps-3 pt-3 no-margin">${enemy.username}</p>
 				<div class="d-flex flex-row justify-content-around align-items-start py-2">
 					<div class="d-flex flex-column justify-content-start px-2">
 					<img src="${enemy.avatar}" alt="User Avatar" class="rounded-circle">
@@ -56,8 +57,9 @@ export class ProfileEnemy extends HTMLElement {
 			`;
 		} else {
 			this.innerHTML = `
+			<p class="no-margin ms-1 text-center">${type}</p>
 			<div class="enemy-avatar-container d-flex flex-column justify-content-center text-center p-2">
-				<p>No ${type.toLowerCase()} yet</p>
+				<p>No ${type.toLowerCase()}</p>
 			</div>
 			`;
 		}
