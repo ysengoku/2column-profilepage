@@ -1,35 +1,34 @@
 export class ProfileEnemy extends HTMLElement {
-	constructor() {
-		super();
-		this._data = null,
-		this._type = null;
-	}
+  constructor() {
+    super();
+    (this._data = null), (this._type = null);
+  }
 
-	static get observedAttributes() {
-        return ['type'];
+  static get observedAttributes() {
+    return ["type"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "type") {
+      this._type = newValue;
+      this.render();
     }
+  }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'type') {
-            this._type = newValue;
-            this.render();
-        }
-    }
+  set data(value) {
+    this._data = value;
+    this.render();
+  }
 
-	set data(value) {
-		this._data = value;
-		this.render();
-	}
+  connectedCallback() {
+    this.render();
+  }
 
-	connectedCallback() {
-		this.render();
-	}
-
-	render() {
-		const type = this._type === 'best' ? 'Best Enemy' : 'Worst Enemy';
-		if (this._data) {
-			const enemy = this._data;
-			this.innerHTML = `
+  render() {
+    const type = this._type === "best" ? "Best Enemy" : "Worst Enemy";
+    if (this._data) {
+      const enemy = this._data;
+      this.innerHTML = `
 			<style>
 				.enemy-avatar-container {
 					height: 144px;
@@ -55,15 +54,15 @@ export class ProfileEnemy extends HTMLElement {
 				</div>
 			</div>
 			`;
-		} else {
-			this.innerHTML = `
+    } else {
+      this.innerHTML = `
 			<p class="no-margin ms-1 text-center">${type}</p>
 			<div class="enemy-avatar-container d-flex flex-column justify-content-center text-center p-2">
 				<p>No ${type.toLowerCase()}</p>
 			</div>
 			`;
-		}
-	}
+    }
+  }
 }
 
-customElements.define('profile-enemy-component', ProfileEnemy);
+customElements.define("profile-enemy-component", ProfileEnemy);

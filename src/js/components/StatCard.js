@@ -1,35 +1,35 @@
 // import sheriff from '../../../img/sheriff.png';
 
 export class ProfileStatCard extends HTMLElement {
-	constructor() {
-		super();
-		this._title = null;
-		this._value = null;
-	}
+  constructor() {
+    super();
+    this._title = null;
+    this._value = null;
+  }
 
-	static get observedAttributes() {
-        return ['title', 'value'];
+  static get observedAttributes() {
+    return ["title", "value"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "title") {
+      this._title = newValue;
+      this.render();
+    } else if (name === "value") {
+      this._value = newValue;
+      this.render();
     }
+  }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'title') {
-            this._title = newValue;
-            this.render();
-        } else if (name === 'value') {
-			this._value = newValue;
-			this.render();
-		} 
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-	connectedCallback() {
-		this.render();
-	}
+  render() {
+    const title = this._title;
+    const value = this._value;
 
-	render() {
-		const title = this._title;
-		const value = this._value;
-
-		this.innerHTML = `
+    this.innerHTML = `
 			<style>
 				.stat-card {
 					width: 96px;
@@ -45,7 +45,7 @@ export class ProfileStatCard extends HTMLElement {
 				<p class="no-margin fs-5">${value}</p>
 			</div>
 			`;
-	}
+  }
 }
 
-customElements.define('profile-stat-card', ProfileStatCard);
+customElements.define("profile-stat-card", ProfileStatCard);

@@ -6,4 +6,11 @@ import { ProfileStatCard } from "./StatCard.js";
 
 import { ProfileEnemy } from "./Enemy.js";
 
-export { OnlineStatusIndicator, ProfileAvatar, ProfileUserInfo, ProfileUserActions, ProfileStatCard, ProfileEnemy };
+export {
+  OnlineStatusIndicator,
+  ProfileAvatar,
+  ProfileUserInfo,
+  ProfileUserActions,
+  ProfileStatCard,
+  ProfileEnemy,
+};
