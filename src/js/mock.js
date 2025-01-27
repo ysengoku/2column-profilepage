@@ -8,6 +8,7 @@ export async function simulateFetchUserProfile() {
 		loses: 30,
 		winrate: 60,
 		scored_balls: 500,
+		total_matches: 75,
 		date_joined: '2021-01-15',
 		best_enemy: { username: 'Alice', avatar: '/img/avatar.png', wins: 20, loses: 10, winrate: 67, elo: 1100 },
 		worst_enemy: { username: 'George', avatar: '/img/avatar2.jpg', wins: 10, loses: 25, winrate: 28, elo: 900 },

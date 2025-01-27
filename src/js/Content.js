@@ -71,7 +71,7 @@ export class Profile extends HTMLElement {
   			}
 		</style>
 
-		<div class="container-fluid d-grid gap-3">
+		<div class="container-fluid d-grid gap-3 h-100">
 			<div class="row h-100 no-gutters">
 
 			<!-- Container Left -->
@@ -94,33 +94,16 @@ export class Profile extends HTMLElement {
 				</div>
 
 				<!-- Container Bottom -->
-				<div class="flex-grow-1" style="background-color: darkolivegreen;">
-					<!-- Buttons -->
-					<div class="d-flex flex-row justify-content-center my-2">
-						<button class="btn btn-primary mx-1">Edit Profile</button>
-						<button class="btn btn-primary mx-1">Edit Profile</button>
-						<button class="btn btn-primary mx-1">Edit Profile</button>
-					</div>
+				<div class="flex-grow-1">
+					<profile-user-actions></profile-user-actions>
 
 					<!-- Stats -->
 					<div class="d-flex flex-row justify-content-around mt-5">
-						<div class="row w-100">
-							<div class="col-3 text-center">
-								<p>Elo</p>
-								<p>1555</p>
-							</div>
-							<div class="col-3 text-center">
-								<p>Total score</p>
-								<p>623</p>
-							</div>
-							<div class="col-3 text-center">
-								<p>Total duals</p>
-								<p>35</p>
-							</div>
-							<div class="col-3 text-center">
-								<p>Friends</p>
-								<p>11</p>
-							</div>
+						<div class="row px-2 w-100">
+							<profile-stat-card class="col-3" title="Elo" value="${this.user.elo}"></profile-stat-card>
+							<profile-stat-card class="col-3" title="Total score" value="${this.user.scored_balls}"></profile-stat-card>
+							<profile-stat-card class="col-3" title="total duels" value="${this.user.total_matches}"></profile-stat-card>	
+							<profile-stat-card class="col-3" title="Friends" value="${friendsCount}"></profile-stat-card>
 						</div>
 					</div>
 
@@ -148,7 +131,7 @@ export class Profile extends HTMLElement {
 				<div class="poster container-fluid d-flex flex-column flex-grow-1 mx-1 my-3 p-3 gap-2">
 
 					<!-- Container Top -->
-					<div class="d-grid" style="background-color: darkgoldenrod;">
+					<div class="d-grid">
 						<div class="row no-gutters no-margin py-3">
 							<div class="col-6">
 								<profile-enemy-component type="best"></profile-enemy-component>
@@ -160,7 +143,7 @@ export class Profile extends HTMLElement {
 					</div>
 
 							<!-- Container Bottom -->
-							<div class="flex-grow-1 d-flex flex-column p-3" style="background-color:chocolate;">
+							<div class="flex-grow-1 d-flex flex-column p-3" style="background-color:grey;">
 								<p>Match History</p>
 							</div>
 						</div>
