@@ -17,5 +17,6 @@ export {
   ProfileStatCard,
   ProfileEnemy,
   UserGameHistory,
-  UserDuelHistory, UserTournamentHistory
+  UserDuelHistory,
+  UserTournamentHistory
 };

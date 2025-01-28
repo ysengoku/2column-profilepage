@@ -47,7 +47,7 @@ export class Profile extends HTMLElement {
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-        color: #2f2926
+          color: #2f2926
       }
       .online-status-indicator {
           width: 16px;
@@ -65,10 +65,10 @@ export class Profile extends HTMLElement {
           padding: 0;
           border: 0;
       }
-        .line {
-          border-top: 4px double #2f2926;
+      .line {
+        border-top: 4px double #2f2926;
         opacity: 1;
-        }
+      }
     </style>
 
     <div class="container-fluid d-grid gap-3 h-100">
@@ -143,8 +143,8 @@ export class Profile extends HTMLElement {
           </div>
 
           <!-- Container Bottom -->
-          <div class="flex-grow-1 d-flex flex-column p-3">
-            <user-game-history></user-game-history>
+          <div class="flex-grow-1 d-flex flex-column px-1 py-3">
+            <user-game-history class="flex-grow-1"></user-game-history>
           </div>
         </div>
       </div>
@@ -177,6 +177,14 @@ export class Profile extends HTMLElement {
 
     if (worstEnemyComponent) {
       worstEnemyComponent.data = this.user.worst_enemy;
+    }
+
+    const gameHistory = this.querySelector("user-game-history");
+    if (gameHistory) {
+      gameHistory.data = {
+        matches: this.user.match_history,
+        // tournaments: = this.user.tournament_history
+      }
     }
   }
 }
