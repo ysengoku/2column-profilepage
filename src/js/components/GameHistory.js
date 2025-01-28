@@ -95,6 +95,7 @@ export class UserGameHistory extends HTMLElement {
       tournamentsTab.classList.remove("active");
       cardBody.innerHTML = "";
       const userDuelHistory = document.createElement("user-duel-history");
+	  userDuelHistory.data = this._data.matches;
       cardBody.appendChild(userDuelHistory);
     });
 
