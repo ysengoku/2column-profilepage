@@ -5,6 +5,9 @@ import { ProfileUserActions } from "./UserActions.js";
 import { ProfileStatCard } from "./StatCard.js";
 
 import { ProfileEnemy } from "./Enemy.js";
+import { UserGameHistory } from "./GameHistory.js";
+import { UserDuelHistory } from "./DuelHistory.js";
+import { UserTournamentHistory } from "./TournamentHistory.js";
 
 export {
   OnlineStatusIndicator,
@@ -13,4 +16,6 @@ export {
   ProfileUserActions,
   ProfileStatCard,
   ProfileEnemy,
+  UserGameHistory,
+  UserDuelHistory, UserTournamentHistory
 };
