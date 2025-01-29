@@ -40,4 +40,14 @@ html, body, #app {
     font-family: "Rye", serif;
     font-weight: 400;
     font-style: normal;
-  }
+}
+
+.donut {
+  animation: circleAnimation 1s;
+}
+
+@keyframes circleAnimation {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+}

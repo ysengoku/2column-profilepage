@@ -59,7 +59,7 @@ export class UserDuelHistory extends HTMLElement {
     this.innerHTML = `
 	  <style>
 	    .user-game-history-table {
-		  font-size: 12px;
+		  font-size: 14px;
           txt-decoration: none;
 		}
 		.user-game-history-table td {

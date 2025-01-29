@@ -40,6 +40,9 @@ export class Profile extends HTMLElement {
     const onlineStatus = document.createElement("profile-online-status");
     onlineStatus.setAttribute("online", this.user.is_online);
 
+    const r = 100 / (2 * Math.PI);  // radius
+    const winRate = this.user.winrate;
+
     this.innerHTML = `
     <style>
       .poster {
@@ -108,19 +111,44 @@ export class Profile extends HTMLElement {
             </div>
 
             <!-- Graphs -->
-            <div class="d-flex flex-row justify-content-around align-items-top">
-              <div class="row h-100 m-3 p-2" style="background-color:grey">
-                <div class="col-md-6" style="background-color:darkslategrey">
-                  <p>Win Rate</p>
-                  <canvas id="winRateChart">
-
-                  </canvas>
+            <div class="d-flex flex-row justify-content-around align-items-top px-2 py-3">
+              <div class="graph-container me-2 px-4 py-2" style="background-color:rgba(0, 0,0, 0.1)">
+                <p>Win Rate</p>
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <svg width="160" height="160" viewBox="0 0 45 45">
+                      <path
+                        d="M20 ${(40 - (r * 2)) / 2}
+                          a ${r} ${r} 0 0 1 0 ${r * 2}
+                          a ${r} ${r} 0 0 1 0 -${r * 2}"
+                        fill="none"
+                        stroke="grey"
+                        stroke-width="6"
+                        stroke-dasharray="100"
+                      />
+                      <path class="donut"
+                        d="M20 ${(40 - (r * 2)) / 2}
+                          a ${r} ${r} 0 0 1 0 ${r * 2}
+                          a ${r} ${r} 0 0 1 0 -${r * 2}"
+                        fill="none"
+                        stroke="#2f2926"
+                        stroke-width="6"
+                        stroke-dasharray="${winRate} 100"
+                      />
+                      <text x="48%" y="36%" text-anchor="middle" dy="7" font-size="0.5rem">
+                        ${winRate}%
+                      </text>
+                    </svg>
+                    <div class="d-flex flex-row justify-content-center">
+                      <p class="fs-6">Wins: ${this.user.wins}</p>
+                      <p>&nbsp;-&nbsp;</p>
+                      <p class="fs-6">Losses: ${this.user.loses}</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-6" style="background-color:darkolivegreen">
+                <div class="graph-container flex-grow-1 ms-1 px-4 py-2" style="background-color:rgba(0, 0,0, 0.1)">
                   <p>Elo progression</p>
                   <canvas id="eloProgressionChart"></canvas>
                 </div>
-              </div>
             </div>
           </div>
         </div>

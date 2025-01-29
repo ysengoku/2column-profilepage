@@ -20,15 +20,17 @@ export class UserGameHistory extends HTMLElement {
 	console.log(this._data.matches);
     this.innerHTML = `
 	  <style>
-	  	.nav-link {
+	  .nav-link {
 		  color: black;
 		  font-size: 0.8rem;
 		}
-		.nav-link.active{
-  	    }
+		.card-header-tabs .nav-link.active {
+      background-color: transparent !important;
+      border-bottom: 4px solid black;
+  	}
 		.nav-link:hover{
 		  color: black;
-  	    }
+  	}
 		.card {
 		  background-color: rgba(0, 0,0, 0.1);
 		  color: black;
@@ -69,7 +71,7 @@ export class UserGameHistory extends HTMLElement {
       <div class="card text-center px-2">
 	    <div class="card-header">
 	      <p class="text-start">Game History</p>
-          <ul class="nav nav-tabs card-header-tabs">
+          <ul class="nav card-header-tabs">
             <li class="nav-item">
               <a class="nav-link active" aria-current="true" id="duels-tab">Duels</a>
             </li>
