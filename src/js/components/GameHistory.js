@@ -53,7 +53,7 @@ export class UserGameHistory extends HTMLElement {
         max-height: 640px;
         overflow-y: auto;
       }
-		  .table-container thead th{
+		  .table-container thead th {
         position: sticky;
         top: 0;
 	      --bs-table-bg: rgba(0, 0, 0, 0.8);

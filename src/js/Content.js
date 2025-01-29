@@ -43,12 +43,16 @@ export class Profile extends HTMLElement {
     this.innerHTML = `
     <style>
       .poster {
-        background-image: url('../../img/poster.png');
+        background-image: url('https://placehold.jp/c7c4c2/dedede/480x640.png?text=mock%20img');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
           color: #2f2926
       }
+      .wanted {
+          font-size: 4rem;
+          color: #2f2926;
+          font-family: 'Rye', cursive;}
       .online-status-indicator {
           width: 16px;
           height: 16px;
@@ -69,6 +73,9 @@ export class Profile extends HTMLElement {
         border-top: 4px double #2f2926;
         opacity: 1;
       }
+      .graph-container {
+       background-color:rgba(0, 0,0, 0.1);
+      }
     </style>
 
     <div class="container-fluid d-grid gap-3 h-100">
@@ -86,7 +93,7 @@ export class Profile extends HTMLElement {
                 ${onlineStatus.outerHTML}
                 <hr class="line flex-grow-1">
               </div>
-              <h1 class="rye-regular">WANTED</h1>
+              <p class="wanted rye-regular">WANTED</p>
               <hr class="line">
             </div>
             <profile-avatar></profile-avatar>
@@ -109,15 +116,14 @@ export class Profile extends HTMLElement {
 
             <!-- Graphs -->
             <div class="d-flex flex-row justify-content-around align-items-top px-2 py-3">
-              <div class="graph-container me-2 px-4 py-2" style="background-color:rgba(0, 0,0, 0.1)">
+              <div class="graph-container me-2 px-4 py-2">
                 <p>Win Rate</p>
                   <user-win-rate-pie-graph></user-win-rate-pie-graph>
-              </div>
-                
-              <div class="graph-container flex-grow-1 ms-1 px-4 py-2" style="background-color:rgba(0, 0,0, 0.1)">
+              </div>               
+              <div class="graph-container flex-grow-1 ms-1 px-4 py-2">
                 <p>Elo progression</p>
                   <canvas id="eloProgressionChart"></canvas>
-                </div>
+              </div>
             </div>
           </div>
         </div>
