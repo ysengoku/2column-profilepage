@@ -28,27 +28,22 @@ export class UserDuelHistory extends HTMLElement {
 	  <tr>
         <td>
           <div class="d-flex flex-row align-items-center">
-	        <img class="user-game-history-avatar" src="${
-                  item.opponent.avatar
-                }">
+	        <img class="user-game-history-avatar" src="${item.opponent.avatar}">
 	        ${item.opponent.username}
           </div>
         </td>
         <td>${formattedDate}</td>
         <td>${item.score}</td>
         <td>
-          <span class="badge text-bg-${
-                  item.is_winner ? "success" : "danger"
-                }">${item.is_winner ? "Win" : "Lost"}</span>
+          <span class="badge text-bg-${item.is_winner ? "success" : "danger"}">
+            ${item.is_winner ? "Win" : "Lost"}
+          </span>
         </td>
         <td>
           <div class="d-flex flex-row align-items-center">
-		    ${item.elo_result}
-		    ${
-            item.is_winner
-              ? '<i class="bi bi-arrow-up-right ps-1"></i>'
-              : '<i class="bi bi-arrow-down-right ps-1"></i>'
-          }
+		        ${item.elo_result}
+		        ${item.is_winner ? '<i class="bi bi-arrow-up-right ps-1"></i>'
+              : '<i class="bi bi-arrow-down-right ps-1"></i>'}
           </div>
         </td>
       </tr>
@@ -60,13 +55,13 @@ export class UserDuelHistory extends HTMLElement {
 	  <style>
 	    .user-game-history-table {
 		  font-size: 14px;
-          txt-decoration: none;
+      txt-decoration: none;
 		}
 		.user-game-history-table td {
-          vertical-align: middle;
+      vertical-align: middle;
 		  background-color: transparent;
 		  color: black;
-        }
+    }
 	  </style>
 	  <table class="table table-hover user-game-history-table">
 		<thead>
@@ -79,10 +74,7 @@ export class UserDuelHistory extends HTMLElement {
 		  </tr>
 		</thead>
 		<tbody>
-          ${this._data
-            .map
-              (item => this.createRow(item))
-            .join("")}
+      ${this._data.map(item => this.createRow(item)).join("")}
 		</tbody>
 	  </table>
 	`;
